@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import ToastProvider from "@/components/Toast/ToastProvider";
 import StoreProvider from "@/store/StoreProvider";
 import Loading from "@/components/Loading/Loading";
+import AOSProvider from "@/components/AOS/AOS";
 
 export const metadata: Metadata = {
   title: "Next 14 Template",
@@ -35,7 +36,9 @@ async function RootLayout({
           <ToastProvider>
             <NextIntlClientProvider messages={messages}>
               <Loading>
-                <StoreProvider>{children}</StoreProvider>
+                <AOSProvider>
+                  <StoreProvider>{children}</StoreProvider>
+                </AOSProvider>
               </Loading>
             </NextIntlClientProvider>
           </ToastProvider>
