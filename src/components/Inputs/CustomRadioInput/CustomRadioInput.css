@@ -1,0 +1,58 @@
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# CustomRadioInput
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.CustomRadioInput {
+  position: relative;
+  min-width: 150px;
+  max-width: 100%;
+}
+.CustomRadioInput label {
+  position: relative;
+  font-size: 13px;
+  font-weight: 300;
+  padding-left: 25px;
+  color: #6b6b6b;
+  cursor: pointer;
+}
+.CustomRadioInput label::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  width: 18px;
+  height: 18px;
+  background-color: #fff;
+  border: 1px solid var(--L_Grey);
+  border-radius: 50%;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: var(--main-transition);
+}
+.CustomRadioInput label::after {
+  position: absolute;
+  content: "";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: 900;
+  left: 4px;
+  top: 50%;
+  transform: translateY(-50%) scale(0);
+  color: #e6f8fc;
+  min-width: 10px;
+  width: 10px;
+  height: 10px;
+  background-color: var(--Primary-Navy);
+  border: 1px solid var(--Primary-Navy);
+  font-size: 100px;
+  border-radius: 0%;
+  transition: var(--main-transition);
+}
+.CustomRadioInput input:checked + label::after {
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+.CustomRadioInput input:checked + label::before {
+  border-color: var(--Primary-Navy);
+}

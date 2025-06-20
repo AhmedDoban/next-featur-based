@@ -1,0 +1,75 @@
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+  # CustomInput
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.CustomInput {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
+.CustomInput label {
+  position: relative;
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--Black);
+  transition: var(--main-transition);
+}
+
+.CustomInput .input-wrapper {
+  position: relative;
+  padding: 8px 12px;
+  border-radius: var(--main-border-radius);
+  font-size: 14px;
+  transition: var(--main-transition);
+  background-color: var(--White);
+  color: var(--Black);
+  border: 1px solid var(--L_Grey);
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.CustomInput input {
+  position: relative;
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: var(--Black);
+  font-size: 14px;
+  outline: none;
+}
+.CustomInput input:-webkit-autofill,
+.CustomInput input:-webkit-autofill:hover,
+.CustomInput input:-webkit-autofill:focus,
+.CustomInput input:-webkit-autofill:active {
+  transition: background-color 9999s ease-in-out 0s;
+  -webkit-text-fill-color: var(--Black);
+}
+
+.CustomInput input::placeholder {
+  color: var(--Neutral-Grey);
+}
+
+.CustomInput .input-wrapper:focus-within {
+  border-color: var(--D_Blue);
+  outline: none;
+}
+.CustomInput .toggle-password {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--Neutral-Grey);
+  font-size: 16px;
+  padding: 4px;
+  margin-left: 8px;
+  display: flex;
+  align-items: center;
+  transition: var(--main-transition);
+}
+
+.CustomInput .toggle-password.active,
+.CustomInput .toggle-password:hover {
+  color: var(--D_Blue);
+}

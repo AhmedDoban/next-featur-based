@@ -1,0 +1,54 @@
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# CustomCheckBoxInput
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.CustomCheckBoxInput {
+  position: relative;
+  min-width: 150px;
+  max-width: 100%;
+}
+.CustomCheckBoxInput label {
+  position: relative;
+  font-size: 13px;
+  font-weight: 300;
+  padding-left: 25px;
+  color: #6b6b6b;
+  cursor: pointer;
+}
+.CustomCheckBoxInput label::before {
+  position: absolute;
+  content: "";
+  left: 0;
+  width: 18px;
+  height: 18px;
+  background-color: #fff;
+  border: 1px solid var(--L_Grey);
+  border-radius: 2px;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: var(--main-transition);
+}
+.CustomCheckBoxInput label::after {
+  position: absolute;
+  content: "\2713";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-weight: 900;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%) rotate(-900deg) scale(0);
+  color: #e6f8fc;
+  width: 18px;
+  height: 18px;
+  background-color: var(--Primary-Navy);
+  border: 1px solid var(--Primary-Navy);
+  border-radius: 2px;
+  font-size: 100px;
+  transition: var(--main-transition);
+}
+.CustomCheckBoxInput input:checked + label::after {
+  font-size: 8px;
+  transform: translateY(-50%);
+}

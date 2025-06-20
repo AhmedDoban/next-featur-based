@@ -1,0 +1,47 @@
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+  # CustomDateInput
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.CustomDateInput {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
+.CustomDateInput label {
+  position: relative;
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--Black);
+  transition: var(--main-transition);
+}
+
+.CustomDateInput .Input {
+  position: relative;
+  padding: 8px 12px;
+  border-radius: var(--main-border-radius);
+  font-size: 14px;
+  transition: var(--main-transition);
+  background-color: var(--White);
+  color: var(--Black);
+  border: 1px solid var(--L_Grey);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.CustomDateInput .Input input {
+  position: relative;
+  background-color: transparent;
+  padding: 0;
+  border: 0;
+  width: 100%;
+}
+
+.CustomDateInput input::placeholder {
+  color: var(--Neutral-Grey);
+}
+
+.CustomDateInput input:focus {
+  outline: none;
+}

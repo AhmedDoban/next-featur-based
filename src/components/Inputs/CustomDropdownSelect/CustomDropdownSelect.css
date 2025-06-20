@@ -1,0 +1,17 @@
+.CustomDropdownSelect {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+.CustomDropdownSelect label {
+  position: relative;
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--Black);
+  transition: var(--main-transition);
+}
+.CustomDropdownSelect label span {
+  font-weight: 300;
+}
