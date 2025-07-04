@@ -1,0 +1,72 @@
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+  # CustomOtpInput
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.CustomOtpInput {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
+.CustomOtpInput label {
+  position: relative;
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--Black);
+  transition: var(--main-transition);
+}
+.CustomOtpInput label span {
+  position: relative;
+  color: var(--Black);
+  font-size: 14px;
+  font-weight: 400;
+}
+.CustomOtpInput label span.required {
+  color: #e9282b;
+  font-size: 16px;
+}
+
+.CustomOtpInput .input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.CustomOtpInput .input-wrapper .Otp-input {
+  position: relative;
+  width: 100% !important;
+  height: 45px;
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  color: var(--Black);
+  font-size: 14px;
+  font-family: 400;
+  outline: none;
+  border-radius: var(--main-border-radius);
+  background-color: var(--Straw);
+  transition: var(--main-transition);
+  background-color: var(--White);
+  color: var(--Black);
+  border: 1px solid var(--L_Grey);
+}
+.CustomOtpInput .input-wrapper .Otp-input:-webkit-autofill,
+.CustomOtpInput .input-wrapper .Otp-input:-webkit-autofill:hover,
+.CustomOtpInput .input-wrapper .Otp-input:-webkit-autofill:focus,
+.CustomOtpInput .input-wrapper .Otp-input:-webkit-autofill:active {
+  transition: background-color 9999s ease-in-out 0s;
+  -webkit-text-fill-color: var(--Black);
+}
+
+.CustomOtpInput .input-wrapper .Otp-input::placeholder {
+  color: var(--Neutral-Grey);
+  font-size: 12px;
+}
+
+.CustomOtpInput .input-wrapper .Otp-input:focus-within {
+  border-color: var(--D_Blue);
+  outline: none;
+}

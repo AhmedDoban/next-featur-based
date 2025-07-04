@@ -1,0 +1,50 @@
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# BackBtn
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.BackBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: fit-content;
+  transition: var(--main-transition);
+  cursor: pointer;
+}
+.BackBtn span {
+  position: relative;
+  color: var(--Black);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1;
+  transition: var(--main-transition);
+}
+.BackBtn.gray {
+  color: var(--Neutral-Grey);
+}
+
+.BackBtn:hover span {
+  color: var(--Primary-Navy);
+}
+.BackBtn .icon {
+  position: relative;
+  height: 15px;
+  width: 15px;
+}
+.BackBtn .icon.reverce {
+  transform: rotate(180deg);
+}
+.BackBtn .icon svg {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.BackBtn .icon svg {
+  color: var(--Black);
+}
+.BackBtn.gray .icon svg {
+  color: var(--Neutral-Grey);
+}
+
+.BackBtn:hover .icon svg {
+  color: var(--Primary-Navy);
+}

@@ -5,7 +5,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 8px;
   width: 100%;
 }
 
@@ -16,10 +16,20 @@
   color: var(--Black);
   transition: var(--main-transition);
 }
+.CustomInput label span {
+  position: relative;
+  color: var(--Black);
+  font-size: 14px;
+  font-weight: 400;
+}
+.CustomInput label span.required {
+  color: #e9282b;
+  font-size: 16px;
+}
 
 .CustomInput .input-wrapper {
   position: relative;
-  padding: 8px 12px;
+  padding: 8px 16px;
   border-radius: var(--main-border-radius);
   font-size: 14px;
   transition: var(--main-transition);
@@ -29,27 +39,38 @@
   width: 100%;
   display: flex;
   align-items: center;
+  gap: 10px;
+  min-height: 43px;
 }
 
-.CustomInput input {
+.CustomInput input,
+.CustomInput textarea {
   position: relative;
   width: 100%;
+  height: 25px;
   border: none;
   background: transparent;
   color: var(--Black);
   font-size: 14px;
+  font-family: 400;
   outline: none;
 }
+
 .CustomInput input:-webkit-autofill,
 .CustomInput input:-webkit-autofill:hover,
 .CustomInput input:-webkit-autofill:focus,
-.CustomInput input:-webkit-autofill:active {
+.CustomInput input:-webkit-autofill:active,
+.CustomInput textarea:-webkit-autofill,
+.CustomInput textarea:-webkit-autofill:hover,
+.CustomInput textarea:-webkit-autofill:focus,
+.CustomInput textarea:-webkit-autofill:active {
   transition: background-color 9999s ease-in-out 0s;
   -webkit-text-fill-color: var(--Black);
 }
 
 .CustomInput input::placeholder {
   color: var(--Neutral-Grey);
+  font-size: 12px;
 }
 
 .CustomInput .input-wrapper:focus-within {
@@ -61,9 +82,10 @@
   border: none;
   cursor: pointer;
   color: var(--Neutral-Grey);
+  width: 25px;
+  height: 25px;
   font-size: 16px;
   padding: 4px;
-  margin-left: 8px;
   display: flex;
   align-items: center;
   transition: var(--main-transition);
@@ -72,4 +94,29 @@
 .CustomInput .toggle-password.active,
 .CustomInput .toggle-password:hover {
   color: var(--D_Blue);
+}
+
+.CustomInput .char-counter {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 12px;
+  color: var(--Neutral-Grey);
+  padding: 2px 4px;
+  margin-top: -3px;
+}
+
+.CustomInput .char-counter span {
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+
+.CustomInput .char-counter .char-limit-reached {
+  color: #e9282b !important;
+  font-weight: 500;
+}
+
+.CustomInput textarea {
+  resize: vertical;
+  min-height: 150px;
 }

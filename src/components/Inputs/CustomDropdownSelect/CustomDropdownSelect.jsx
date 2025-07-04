@@ -1,6 +1,7 @@
-import Select from "react-select";
-import { ErrorMessage } from "formik";
+import ReactDropdownSelect from "react-dropdown-select";
+import { ErrorMessage, useFormikContext } from "formik";
 import "./CustomDropdownSelect.css";
+import { useLocale } from "next-intl";
 
 export default function CustomDropdownSelect({
   name,
@@ -8,93 +9,65 @@ export default function CustomDropdownSelect({
   labelField = "label",
   valueField = "value",
   multi = false,
-  setFieldValue,
-  DropOptions,
+  options,
   value,
-  optional,
+  required = false,
+  placeholder,
+  keepSelected = true,
+  onValueChange,
 }) {
-  const selectedValue = multi
-    ? DropOptions.filter((option) =>
-        value?.some((val) => val?.[valueField] === option?.[valueField])
-      )
-    : DropOptions.find(
-        (option) => option?.[valueField] === value?.[valueField]
-      );
-
-  const handleChange = (selectedOption) => {
-    setFieldValue(name, multi ? selectedOption || [] : selectedOption || null);
-  };
-
-  const formattedOptions = DropOptions.map((option) => ({
-    label: option[labelField],
-    value: option[valueField],
-    original: option,
-  }));
-
-  const customStyles = {
-    control: (base, state) => ({
-      ...base,
-      backgroundColor: "var(--White)",
-      border: `1px solid ${
-        state.isFocused ? "var(--D_Blue)" : "var(--L_Grey)"
-      }`,
-      borderRadius: "var(--main-border-radius)",
-      boxShadow: "none",
-      padding: "4px 6px",
-      fontSize: "14px",
-      fontWeight: 300,
-      minHeight: "40px",
-    }),
-    option: (base, state) => ({
-      ...base,
-      fontSize: "14px",
-      backgroundColor: state.isSelected
-        ? "var(--D_Blue)"
-        : state.isFocused
-        ? "#f2f2f2"
-        : "var(--White)",
-      color: state.isSelected ? "white" : "var(--Black)",
-    }),
-    menu: (base) => ({
-      ...base,
-      zIndex: 10,
-      borderRadius: "var(--main-border-radius)",
-      backgroundColor: "var(--White)",
-    }),
-    multiValue: (base) => ({
-      ...base,
-      backgroundColor: "var(--L_Grey)",
-      borderRadius: "8px",
-    }),
-    placeholder: (base) => ({
-      ...base,
-      color: "var(--Neutral-Grey)",
-    }),
-    singleValue: (base) => ({
-      ...base,
-      color: "var(--Black)",
-    }),
+  const localActive = useLocale();
+  const { setFieldValue } = useFormikContext();
+  const handleChange = (selected) => {
+    setFieldValue(name, multi ? selected : selected[0] || null);
+    if (onValueChange) onValueChange(multi ? selected : selected[0] || null);
   };
 
   return (
     <div className="CustomDropdownSelect">
-      <label htmlFor={name}>
-        {label}
-        {optional && <span className="optional-text"> (Optional)</span>}
-      </label>
-      <div className="input-box">
-        <Select
-          name={name}
-          options={formattedOptions}
-          value={selectedValue}
-          onChange={handleChange}
-          isMulti={multi}
-          styles={customStyles}
-          getOptionLabel={(e) => e.label}
-          getOptionValue={(e) => e.value}
-          classNamePrefix="custom-select"
-        />
-      </div>
+      {label && (
+        <label htmlFor={name}>
+          {label}
+          {required && (
+            <span className={required === true ? "required" : "optional"}>
+              {required === true
+                ? " *"
+                : typeof required == "string"
+                ? ` (${required}) `
+                : ` (optional) `}
+            </span>
+          )}
+        </label>
+      )}
+
+      <ReactDropdownSelect
+        name={name}
+        options={options}
+        values={multi ? value || [] : value ? [value] : []}
+        onChange={handleChange}
+        multi={multi}
+        labelField={labelField}
+        valueField={valueField}
+        placeholder={placeholder}
+        className="custom-dropdown-select"
+        direction={localActive === "ar" ? "rtl" : "ltr"}
+        dropdownPosition="auto"
+        keepSelectedInList={keepSelected}
+        style={{
+          fontWeight: "400",
+          fontSize: "14px",
+          color: "#212121",
+          width: "100%",
+          backgroundColor: "#fff",
+          border: "1px solid #89939e",
+          minHeight: "43px",
+          padding: "8px 16px",
+          boxShadow: "none",
+          borderRadius: "0.5rem",
+          transition: "all 0.5s ease-in-out",
+        }}
+      />
+
       <ErrorMessage
         name={name}
         component="div"

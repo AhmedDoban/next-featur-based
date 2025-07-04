@@ -3,11 +3,32 @@ import "./CustomImageUpload.css";
 import { useFormikContext } from "formik";
 import Image from "next/image";
 
-function CustomImageUpload({ title, description, name, accept }) {
+function CustomImageUpload({
+  label,
+  required,
+  title,
+  description,
+  name,
+  accept,
+}) {
   const { setFieldValue, values } = useFormikContext();
 
   return (
     <div className="CustomImageUpload">
+      {label && (
+        <label htmlFor={name}>
+          {label}
+          {required && (
+            <span className={required === true ? "required" : "optional"}>
+              {required === true
+                ? " *"
+                : typeof required == "string"
+                ? ` (${required} ) `
+                : ` (${Translate("optional")}) `}
+            </span>
+          )}
+        </label>
+      )}
       <input
         type="file"
         name={name}

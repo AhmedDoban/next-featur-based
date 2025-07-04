@@ -1,0 +1,260 @@
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+# StepProgress - Modern Linear Stepper
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.StepProgress {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.StepProgress h1 {
+  position: relative;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--D_grey, #333);
+  text-align: center;
+  margin: 0;
+  transition: var(--main-transition);
+}
+
+/* Desktop Layout */
+.StepProgress .steps {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* Progress line background */
+.StepProgress .steps::before {
+  content: "";
+  position: absolute;
+  top: 40%;
+  left: 3rem;
+  right: 3rem;
+  height: 4px;
+  background-color: var(--Neutral-Grey);
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+/* Progress line active/completed */
+.StepProgress .steps::after {
+  content: "";
+  position: absolute;
+  top: 40%;
+  left: 3rem;
+  height: 4px;
+  width: var(--progress-width, 0%);
+  max-width: calc(100% - 6rem);
+  background-color: var(--Primary-Navy, #1e40af);
+  transform: translateY(-50%);
+  transition: width 0.4s ease-in-out;
+  z-index: 2;
+}
+
+/* Individual step container */
+.StepProgress .steps .step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 3;
+}
+
+/* Step circle */
+.StepProgress .steps .step .step-circle {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: var(--Neutral-Grey, #e0e0e0);
+  border: 3px solid var(--Neutral-Grey, #e0e0e0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--main-transition);
+  position: relative;
+}
+
+.StepProgress .steps .step .step-circle .step-number {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  transition: var(--main-transition);
+}
+
+/* Step title */
+.StepProgress .steps .step .Step-title {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--D_grey, #666);
+  text-align: center;
+  line-height: 1.4;
+  transition: var(--main-transition);
+  max-width: 120px;
+  white-space: nowrap;
+}
+
+/* Active step styles */
+.StepProgress .steps .step.active .step-circle {
+  background-color: var(--Primary-Navy, #1e40af);
+  border-color: var(--Primary-Navy, #1e40af);
+  animation: Glowing 2s ease-in-out infinite;
+  transition: var(--main-transition);
+}
+@keyframes Glowing {
+  0% {
+    box-shadow: 0 0 0 0px rgba(30, 64, 175, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(30, 64, 175, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 0 0px rgba(30, 64, 175, 0.4);
+  }
+}
+
+.StepProgress .steps .step.active .step-circle .step-number {
+  color: #fff;
+}
+
+.StepProgress .steps .step.active .Step-title {
+  color: var(--Primary-Navy, #1e40af);
+  font-weight: 600;
+}
+
+/* Completed step styles */
+.StepProgress .steps .step.completed .step-circle {
+  background-color: var(--Primary-Navy, #1e40af);
+  border-color: var(--Primary-Navy, #1e40af);
+}
+
+.StepProgress .steps .step.completed .step-circle .step-number {
+  color: #fff;
+  font-size: 1.1rem;
+}
+
+.StepProgress .steps .step.completed .Step-title {
+  color: var(--Primary-Navy, #1e40af);
+  font-weight: 600;
+}
+
+/* Mobile Layout */
+@media (max-width: 768px) {
+  .StepProgress {
+    gap: 1.5rem;
+    padding: 1rem 1.5rem;
+  }
+
+  .StepProgress h1 {
+    font-size: 1.5rem;
+  }
+
+  .StepProgress .steps {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    max-width: none;
+    padding: 1rem 0;
+    gap: 0;
+    position: relative;
+  }
+
+  /* Vertical progress line background */
+  .StepProgress .steps::before {
+    content: "";
+    position: absolute;
+    left: 1rem;
+    top: 3rem; /* Start from center of first circle */
+    bottom: 3rem; /* End at center of last circle */
+    width: 4px;
+    height: auto;
+    background-color: var(--Neutral-Grey, #e0e0e0);
+    transform: none;
+    z-index: 1;
+  }
+
+  /* Vertical progress line active/completed */
+  .StepProgress .steps::after {
+    content: "";
+    position: absolute;
+    left: 1rem;
+    top: 3rem; /* Start from center of first circle */
+    width: 4px;
+    height: var(--progress-height, 0%);
+    max-height: calc(100% - 6rem); /* Don't exceed the line length */
+    background-color: var(--Primary-Navy, #1e40af);
+    transform: none;
+    transition: height 0.4s ease-in-out;
+    z-index: 2;
+  }
+
+  /* Mobile step container */
+  .StepProgress .steps .step {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: none;
+    padding: 1rem 0;
+    position: relative;
+  }
+
+  /* Mobile step circle */
+  .StepProgress .steps .step .step-circle {
+    width: 2rem;
+    height: 2rem;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 3;
+  }
+
+  /* Mobile step title */
+  .StepProgress .steps .step .Step-title {
+    text-align: left;
+    font-size: 1rem;
+    max-width: none;
+    flex: 1;
+  }
+
+  /* Enable glowing animation on mobile for active steps */
+  .StepProgress .steps .step.active .step-circle {
+    animation: Glowing 2s ease-in-out infinite;
+  }
+}
+
+/* Small mobile adjustments */
+@media (max-width: 480px) {
+  .StepProgress {
+    padding: 0.75rem 1rem;
+  }
+
+  .StepProgress h1 {
+    font-size: 1.25rem;
+  }
+
+  .StepProgress .steps .step .step-circle {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .StepProgress .steps .step .step-circle .step-number {
+    font-size: 0.875rem;
+  }
+
+  .StepProgress .steps .step .Step-title {
+    font-size: 0.875rem;
+  }
+
+  .StepProgress .steps::before,
+  .StepProgress .steps::after {
+    left: 1.25rem;
+  }
+}

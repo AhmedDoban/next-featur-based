@@ -1,0 +1,209 @@
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+  # CustomTextEditor
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.CustomTextEditor {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.CustomTextEditor label {
+  position: relative;
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--Black);
+  transition: var(--main-transition);
+}
+
+.CustomTextEditor label span {
+  position: relative;
+  color: var(--Black);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.CustomTextEditor label span.required {
+  color: #e9282b;
+  font-size: 16px;
+}
+
+.CustomTextEditor .editor-wrapper {
+  position: relative;
+  border-radius: var(--main-border-radius);
+  transition: var(--main-transition);
+  background-color: var(--White);
+  border: 1px solid var(--L_Grey);
+  overflow: hidden;
+}
+
+.CustomTextEditor .editor-wrapper:focus-within {
+  border-color: var(--D_Blue);
+}
+
+/* Jodit Editor Styling */
+.CustomTextEditor .jodit-container {
+  border: none !important;
+  border-radius: var(--main-border-radius) !important;
+  font-family: inherit !important;
+}
+
+.CustomTextEditor .jodit-toolbar-editor-collection {
+  background-color: #f8f9fa !important;
+  border-bottom: 1px solid var(--L_Grey) !important;
+  padding: 8px 12px !important;
+  border-radius: var(--main-border-radius) var(--main-border-radius) 0 0 !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  overflow-x: auto !important;
+  overflow-y: visible !important;
+}
+
+.CustomTextEditor .jodit-workplace {
+  background-color: var(--White) !important;
+  border-radius: 0 0 var(--main-border-radius) var(--main-border-radius) !important;
+}
+
+.CustomTextEditor .jodit-wysiwyg {
+  padding: 12px 16px !important;
+  font-size: 14px !important;
+  line-height: 1.5 !important;
+  color: var(--Black) !important;
+  font-family: inherit !important;
+  min-height: 150px !important;
+}
+
+.CustomTextEditor .jodit-wysiwyg:focus {
+  outline: none !important;
+}
+
+/* Toolbar button styling */
+.CustomTextEditor .jodit-toolbar-button {
+  border-radius: 4px !important;
+  transition: all 0.3s ease !important;
+  margin: 2px !important;
+}
+
+.CustomTextEditor .jodit-toolbar-button:hover {
+  background-color: var(--Primary-Navy) !important;
+  color: var(--White) !important;
+}
+
+.CustomTextEditor .jodit-toolbar-button.jodit-toolbar-button_active {
+  background-color: var(--D_Blue) !important;
+  color: var(--White) !important;
+}
+
+/* Status bar styling */
+.CustomTextEditor .jodit-status-bar {
+  background-color: #f8f9fa !important;
+  border-top: 1px solid var(--L_Grey) !important;
+  padding: 4px 8px !important;
+  font-size: 12px !important;
+  color: var(--Neutral-Grey) !important;
+}
+
+/* Character Counter Styles */
+.CustomTextEditor .char-counter {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 12px;
+  color: var(--Neutral-Grey);
+  padding: 2px 4px;
+  margin-top: -3px;
+}
+
+.CustomTextEditor .char-counter span {
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+
+.CustomTextEditor .char-counter .char-limit-reached {
+  color: #e9282b !important;
+  font-weight: 500;
+}
+
+/* Responsive Design - Keep all buttons, just make them smaller and wrap */
+@media (max-width: 768px) {
+  .CustomTextEditor .jodit-toolbar-editor-collection {
+    padding: 6px 8px !important;
+    flex-wrap: wrap !important;
+    gap: 2px !important;
+  }
+
+  .CustomTextEditor .jodit-wysiwyg {
+    padding: 8px 12px !important;
+    font-size: 16px !important; /* Prevents zoom on iOS */
+  }
+
+  .CustomTextEditor .jodit-toolbar-button {
+    margin: 1px !important;
+    padding: 4px 6px !important;
+    min-width: 28px !important;
+    height: 28px !important;
+    font-size: 12px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .CustomTextEditor .jodit-toolbar-editor-collection {
+    padding: 4px 6px !important;
+    max-height: 120px !important;
+    overflow-y: auto !important;
+  }
+
+  .CustomTextEditor .jodit-toolbar-button {
+    margin: 0.5px !important;
+    padding: 3px 5px !important;
+    min-width: 24px !important;
+    height: 24px !important;
+    font-size: 11px !important;
+  }
+}
+
+/* Fullscreen mode - show all buttons properly */
+.jodit-fullsize .jodit-toolbar-editor-collection {
+  width: 100% !important;
+  max-width: none !important;
+  flex-wrap: wrap !important;
+  padding: 8px 12px !important;
+  max-height: 80px !important;
+  overflow-y: auto !important;
+}
+
+.jodit-fullsize {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: 10000 !important;
+  background: white !important;
+}
+
+.jodit-fullsize .jodit-workplace {
+  height: calc(100vh - 100px) !important;
+}
+
+.jodit-fullsize .jodit-wysiwyg {
+  height: calc(100vh - 140px) !important;
+  max-height: calc(100vh - 140px) !important;
+}
+
+/* Error Message */
+.CustomTextEditor .ErrorMessage {
+  color: #e9282b;
+  font-size: 12px;
+  margin-top: 4px;
+  padding-left: 4px;
+}
+
+/* Placeholder styling */
+.CustomTextEditor .jodit-wysiwyg[data-placeholder]:not(:focus):empty::before {
+  content: attr(data-placeholder);
+  color: var(--Neutral-Grey);
+  font-style: italic;
+  opacity: 0.7;
+}

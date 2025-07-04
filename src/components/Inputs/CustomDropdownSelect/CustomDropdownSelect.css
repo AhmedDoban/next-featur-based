@@ -1,3 +1,6 @@
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+  # CustomDropdownSelect
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
 .CustomDropdownSelect {
   position: relative;
   display: flex;
@@ -5,13 +8,36 @@
   gap: 5px;
   width: 100%;
 }
+
 .CustomDropdownSelect label {
   position: relative;
-  font-weight: 300;
+  font-weight: 400;
   font-size: 14px;
   color: var(--Black);
   transition: var(--main-transition);
 }
 .CustomDropdownSelect label span {
-  font-weight: 300;
+  position: relative;
+  color: var(--Black);
+  font-size: 14px;
+  font-weight: 400;
+}
+.CustomDropdownSelect label span.required {
+  color: #e9282b;
+  font-size: 16px;
+}
+
+.CustomDropdownSelect .custom-dropdown-select:focus-within {
+  border-color: var(--D_Blue);
+}
+.CustomDropdownSelect .custom-dropdown-select input::placeholder {
+  color: var(--Neutral-Grey);
+  font-size: 12px;
+}
+.CustomDropdownSelect
+  .custom-dropdown-select
+  .react-dropdown-select-item-selected,
+.CustomDropdownSelect .custom-dropdown-select .react-dropdown-select-option {
+  background-color: var(--Primary-Navy);
+  color: var(--White);
 }
