@@ -1,0 +1,180 @@
+/*ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ
+  # CustomPhoneInput (using react-phone-number-input)
+ــــــــــــــــــــــــــــــــــــــــــــــــــــــــــــ*/
+.CustomPhoneInput {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.CustomPhoneInput label {
+  position: relative;
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--main-label-color);
+  transition: var(--main-transition);
+}
+
+.CustomPhoneInput label span {
+  position: relative;
+  color: var(--main-label-color);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.CustomPhoneInput label span.required {
+  color: var(--main-required-color);
+  font-size: 16px;
+}
+
+.CustomPhoneInput .phone-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* Override react-phone-number-input default styles */
+.CustomPhoneInput .PhoneInput {
+  display: flex;
+  align-items: stretch;
+  border-radius: var(--main-border-radius);
+  border: 1px solid var(--main-input-border-colors);
+  background-color: var(--main-input-bg-color);
+  transition: var(--main-transition);
+  min-height: 43px;
+  overflow: hidden;
+}
+
+.CustomPhoneInput .PhoneInput:focus-within {
+  border-color: var(--main-input-focus-border-color);
+  outline: none;
+}
+
+.CustomPhoneInput .PhoneInputInput {
+  flex: 1;
+  height: 41px;
+  padding: 8px 16px;
+  border: none;
+  background: transparent;
+  color: var(--main-input-text-color);
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+}
+
+.CustomPhoneInput .PhoneInputInput::placeholder {
+  color: var(--main-input-placeholder-color);
+  font-size: 12px;
+}
+
+.CustomPhoneInput .PhoneInputInput:-webkit-autofill,
+.CustomPhoneInput .PhoneInputInput:-webkit-autofill:hover,
+.CustomPhoneInput .PhoneInputInput:-webkit-autofill:focus,
+.CustomPhoneInput .PhoneInputInput:-webkit-autofill:active {
+  transition: background-color 9999s ease-in-out 0s;
+  -webkit-text-fill-color: var(--main-input-text-color);
+}
+
+/* Country select styling */
+.CustomPhoneInput .PhoneInputCountry {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 50px;
+  padding: 0 8px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: var(--main-transition);
+  position: relative;
+}
+
+.CustomPhoneInput .PhoneInputCountry:hover {
+  background-color: var(--main-dropdown-hover-bg-color);
+}
+
+.CustomPhoneInput .PhoneInputCountryIcon {
+  width: 20px;
+  height: 15px;
+  display: block;
+}
+
+.CustomPhoneInput .PhoneInputCountrySelect {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 1;
+}
+
+.CustomPhoneInput .PhoneInputCountrySelectArrow {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 3px solid transparent;
+  border-right: 3px solid transparent;
+  border-top: 4px solid var(--main-input-placeholder-color);
+  border-bottom: none;
+  margin-left: 4px;
+  transition: var(--main-transition);
+  vertical-align: middle;
+}
+
+.CustomPhoneInput .PhoneInputCountry:hover .PhoneInputCountrySelectArrow {
+  border-top-color: var(--main-input-focus-border-color);
+}
+
+/* No dropdown mode - hide country selector completely */
+.CustomPhoneInput .PhoneInput.no-dropdown .PhoneInputCountry {
+  display: none;
+}
+
+.CustomPhoneInput .PhoneInput.no-dropdown .PhoneInputInput {
+  border-radius: var(--main-border-radius);
+}
+
+/* Disabled state */
+.CustomPhoneInput .PhoneInput .PhoneInputInput:disabled {
+  background-color: #f9fafb;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.CustomPhoneInput
+  .PhoneInput
+  .PhoneInputCountry:has(.PhoneInputInput:disabled) {
+  background-color: #f9fafb;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Error state */
+.CustomPhoneInput.error .PhoneInput {
+  border-color: var(--main-error-color);
+}
+
+/* Error message styling (consistent with other inputs) */
+.CustomPhoneInput .ErrorMessage {
+  color: var(--main-error-color);
+  font-size: 12px;
+  margin-top: 4px;
+  padding: 0 4px;
+}
+
+/* RTL Support */
+[dir="rtl"] .CustomPhoneInput .PhoneInputCountry {
+  border-right: none;
+  border-left: 1px solid var(--main-input-border-colors);
+}
+
+[dir="rtl"] .CustomPhoneInput .PhoneInputCountrySelectArrow {
+  margin-left: 0;
+  margin-right: 4px;
+}

@@ -8,6 +8,7 @@ import CustomDateInput from "@/components/Inputs/CustomDateInput/CustomDateInput
 import CustomOtpInput from "@/components/Inputs/CustomOtpInput/CustomOtpInput";
 import Link from "next/link";
 import FormikCustomImageUpload from "@/components/Inputs/CustomImageUpload";
+import CustomPhoneInput from "@/components/Inputs/CustomPhoneInput/CustomPhoneInput";
 
 function RegisterForm({ SetStep }) {
   // Sample data for dropdowns
@@ -73,15 +74,6 @@ function RegisterForm({ SetStep }) {
             maxLength={100}
           />
 
-          <CustomInput
-            type={"tel"}
-            name={"phone"}
-            placeholder="+1 (555) 123-4567"
-            label="Phone Number"
-            required={false}
-            maxLength={20}
-          />
-
           {/* Password Inputs */}
           <CustomInput
             type={"password"}
@@ -99,6 +91,21 @@ function RegisterForm({ SetStep }) {
             label="Confirm Password"
             required={true}
             maxLength={128}
+          />
+          <CustomPhoneInput
+            name="phone"
+            label="Phone Number"
+            placeholder="Enter phone number"
+            required={true}
+            showDropdown={true}
+          />
+          <CustomPhoneInput
+            name="phone_w"
+            label="Phone Number"
+            placeholder="Enter phone number"
+            required={true}
+            showDropdown={false}
+            format={true}
           />
 
           {/* Date Input */}
