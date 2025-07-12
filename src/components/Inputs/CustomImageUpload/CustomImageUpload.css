@@ -14,17 +14,17 @@
   position: relative;
   font-weight: 400;
   font-size: 14px;
-  color: var(--Black);
+  color: var(--main-label-color);
   transition: var(--main-transition);
 }
 .CustomImageUpload > label span {
   position: relative;
-  color: var(--Black);
+  color: var(--main-label-color);
   font-size: 14px;
   font-weight: 400;
 }
 .CustomImageUpload > label span.required {
-  color: #e9282b;
+  color: var(--main-required-color);
   font-size: 16px;
 }
 
@@ -33,23 +33,25 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   gap: 15px;
-  padding: 40px;
+  padding: 10px;
+  height: 200px;
   width: 100%;
   border-radius: 10px;
-  border: 1px dashed var(--L_Grey);
-  background: var(--White);
+  border: 1px dashed var(--main-input-border-colors);
+  background: var(--main-input-bg-color);
   transition: var(--main-transition);
 }
 .CustomImageUpload input + label svg {
   position: relative;
   width: 40px;
   height: 40px;
-  color: var(--Primary-Navy);
+  color: var(--main-input-text-color);
 }
 .CustomImageUpload input + label h1 {
   position: relative;
-  color: var(--D_grey);
+  color: var(--main-input-text-color);
   text-align: center;
   font-size: 14px;
   font-weight: 700;
@@ -57,7 +59,7 @@
 }
 .CustomImageUpload input + label p {
   position: relative;
-  color: var(--L_Grey);
+  color: var(--main-p-color);
   text-align: center;
   font-size: 12px;
   font-weight: 400;
@@ -66,7 +68,51 @@
 .CustomImageUpload input + label img {
   position: relative;
   width: 100%;
-  height: 300px;
+  height: 100%;
   object-fit: cover;
-  border-radius: 10px;
+  object-position: center center;
+  border-radius: 8px;
+}
+
+.CustomImageUpload input:not(:placeholder-shown) + label {
+  border-color: var(--main-input-focus-border-color);
+}
+
+.CustomImageUpload input:valid + label {
+  height: 300px;
+}
+
+.CustomImageUpload input:placeholder-shown + label {
+  height: 200px;
+}
+
+.CustomImageUpload[data-has-file="true"] input + label {
+  height: 300px;
+}
+
+.CustomImageUpload[data-has-file="false"] input + label {
+  height: 200px;
+  border: 1px dashed var(--main-input-border-colors);
+}
+
+.CustomImageUpload label.has-file {
+  height: 300px;
+  background: var(--main-input-bg-color);
+}
+
+.CustomImageUpload label.no-file {
+  height: 200px;
+  border: 1px dashed var(--main-input-border-colors);
+  background: var(--White);
+}
+
+.CustomImageUpload label.no-file:hover,
+.CustomImageUpload[data-drag-over="true"] input + label {
+  border-color: var(--main-input-focus-border-color);
+  transform: translateY(-2px);
+}
+
+.CustomImageUpload input + label:hover {
+  border-color: var(--main-input-focus-border-color);
+  cursor: pointer;
 }

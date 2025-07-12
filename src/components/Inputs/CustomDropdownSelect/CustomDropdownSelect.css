@@ -5,7 +5,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 8px;
   width: 100%;
 }
 
@@ -13,31 +13,147 @@
   position: relative;
   font-weight: 400;
   font-size: 14px;
-  color: var(--Black);
+  color: var(--main-label-color);
   transition: var(--main-transition);
 }
 .CustomDropdownSelect label span {
   position: relative;
-  color: var(--Black);
+  color: var(--main-label-color);
   font-size: 14px;
   font-weight: 400;
 }
 .CustomDropdownSelect label span.required {
-  color: #e9282b;
+  color: var(--main-required-color);
   font-size: 16px;
 }
 
-.CustomDropdownSelect .custom-dropdown-select:focus-within {
-  border-color: var(--D_Blue);
+.CustomDropdownSelect .custom-dropdown-select {
+  border-radius: var(--main-border-radius);
+  border: 1px solid var(--main-input-border-colors);
+  background-color: var(--main-input-bg-color);
+  transition: var(--main-transition);
+  font-size: 14px;
+  min-height: 43px;
 }
+
+.CustomDropdownSelect .custom-dropdown-select:focus-within,
+.CustomDropdownSelect .custom-dropdown-select:focus {
+  border-color: var(--main-input-focus-border-color);
+  outline: none;
+}
+
+.CustomDropdownSelect .custom-dropdown-select input {
+  color: var(--main-input-text-color);
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
 .CustomDropdownSelect .custom-dropdown-select input::placeholder {
-  color: var(--Neutral-Grey);
+  color: var(--main-input-placeholder-color);
   font-size: 12px;
 }
+
 .CustomDropdownSelect
   .custom-dropdown-select
   .react-dropdown-select-item-selected,
 .CustomDropdownSelect .custom-dropdown-select .react-dropdown-select-option {
-  background-color: var(--Primary-Navy);
-  color: var(--White);
+  background-color: var(--main-dropdown-select-bg-color);
+  color: var(--main-dropdown-select-text-color) !important;
+  transition: var(--main-transition);
+}
+
+.CustomDropdownSelect
+  .custom-dropdown-select
+  .react-dropdown-select-option:hover,
+.CustomDropdownSelect
+  .custom-dropdown-select
+  .react-dropdown-select-item-selected:hover {
+  background-color: var(--main-dropdown-hover-bg-color) !important;
+  color: var(--main-dropdown-hover-text-color) !important;
+}
+
+.CustomDropdownSelect .custom-dropdown-select .react-dropdown-select-dropdown {
+  background-color: var(--main-input-bg-color);
+  border: 1px solid var(--main-input-border-colors);
+  border-radius: var(--main-border-radius);
+}
+
+.CustomDropdownSelect .custom-dropdown-select .react-dropdown-select-item {
+  color: var(--main-input-text-color);
+  padding: 8px 12px;
+  transition: var(--main-transition);
+}
+
+.CustomDropdownSelect
+  .custom-dropdown-select
+  .react-dropdown-select-item:hover {
+  background-color: var(--main-dropdown-hover-bg-color);
+  color: var(--main-dropdown-hover-text-color);
+}
+
+.CustomDropdownSelect .custom-dropdown-select .react-dropdown-select-clear {
+  color: var(--main-input-placeholder-color);
+  transition: var(--main-transition);
+}
+
+.CustomDropdownSelect
+  .custom-dropdown-select
+  .react-dropdown-select-clear:hover {
+  color: var(--main-error-color);
+}
+
+.CustomDropdownSelect .custom-dropdown-select .react-dropdown-select-separator {
+  background-color: var(--main-input-border-colors);
+}
+
+.CustomDropdownSelect
+  .custom-dropdown-select
+  .react-dropdown-select-dropdown-handle {
+  color: var(--main-input-placeholder-color);
+  transition: var(--main-transition);
+}
+
+.CustomDropdownSelect
+  .custom-dropdown-select
+  .react-dropdown-select-dropdown-handle:hover {
+  color: var(--main-input-focus-border-color);
+}
+
+/* Error state */
+.CustomDropdownSelect.error .custom-dropdown-select {
+  border-color: var(--main-error-color);
+}
+
+/* Disabled state */
+.CustomDropdownSelect .custom-dropdown-select.react-dropdown-select-disabled {
+  background-color: #f9fafb;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Multi-select tags */
+.CustomDropdownSelect
+  .custom-dropdown-select
+  .react-dropdown-select-item-renderer {
+  background-color: var(--main-dropdown-select-bg-color);
+  color: var(--main-dropdown-select-text-color);
+  border-radius: calc(var(--main-border-radius) * 0.5);
+  padding: 2px 8px;
+  font-size: 12px;
+}
+
+.CustomDropdownSelect
+  .custom-dropdown-select
+  .react-dropdown-select-item-renderer
+  .react-dropdown-select-item-remove {
+  color: var(--white);
+  margin-left: 4px;
+}
+
+.CustomDropdownSelect
+  .custom-dropdown-select
+  .react-dropdown-select-item-renderer
+  .react-dropdown-select-item-remove:hover {
+  color: var(--main-error-color);
 }

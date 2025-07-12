@@ -1,4 +1,4 @@
-import { Field, useFormikContext } from "formik";
+import { ErrorMessage, Field, useFormikContext } from "formik";
 import "./CustomRadioInput.css";
 
 function CustomRadioInput({ name, id, label, value }) {
@@ -21,6 +21,7 @@ function CustomRadioInput({ name, id, label, value }) {
       <label htmlFor={id} onChange={() => setFieldValue(name, value)}>
         {label}
       </label>
+      <ErrorMessage name={name} component="div" className="error-message" />
     </div>
   );
 }

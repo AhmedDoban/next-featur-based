@@ -20,8 +20,8 @@
   left: 0;
   width: 18px;
   height: 18px;
-  background-color: #fff;
-  border: 1px solid var(--L_Grey);
+  background-color: var(--main-checkbox-bg-color);
+  border: 1px solid var(--main-checkbox-border-color);
   border-radius: 50%;
   left: 0;
   top: 50%;
@@ -43,8 +43,8 @@
   min-width: 10px;
   width: 10px;
   height: 10px;
-  background-color: var(--Primary-Navy);
-  border: 1px solid var(--Primary-Navy);
+  background-color: var(--main-checkbox-checked-bg-color);
+  border: 1px solid var(--main-checkbox-checked-border-color);
   font-size: 100px;
   border-radius: 0%;
   transition: var(--main-transition);
@@ -54,5 +54,5 @@
   transform: translateY(-50%);
 }
 .CustomRadioInput input:checked + label::before {
-  border-color: var(--Primary-Navy);
+  border-color: var(--main-checkbox-checked-bg-color);
 }

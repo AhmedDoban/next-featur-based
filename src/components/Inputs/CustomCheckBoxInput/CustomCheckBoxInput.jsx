@@ -1,4 +1,4 @@
-import { Field, useFormikContext } from "formik";
+import { ErrorMessage, Field, useFormikContext } from "formik";
 import "./CustomCheckBoxInput.css";
 import { useLocale } from "next-intl";
 
@@ -11,6 +11,7 @@ function CustomCheckBoxInput({ name, id, label, value }) {
       <label htmlFor={id} onChange={() => setFieldValue(name, value)}>
         {label}
       </label>
+      <ErrorMessage name={name} component="div" className="error-message" />
     </div>
   );
 }

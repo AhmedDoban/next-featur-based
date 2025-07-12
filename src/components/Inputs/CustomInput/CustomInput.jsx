@@ -2,18 +2,17 @@ import { ErrorMessage, Field, useField } from "formik";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import "./CustomInput.css";
-import EyeSlash from "../../../../public/Icons/EyeSlash";
-import Eye from "../../../../public/Icons/Eye";
-import Search from "../../../../public/Icons/Search";
+import { HiEyeSlash, HiEye } from "react-icons/hi2";
+import { HiSearch } from "react-icons/hi";
 
-function CustomInput({ 
-  type = "text", 
-  name, 
-  placeholder, 
-  label, 
-  required, 
+function CustomInput({
+  type = "text",
+  name,
+  placeholder,
+  label,
+  required,
   maxLength = null,
-  showCharCount = false 
+  showCharCount = false,
 }) {
   const [field, meta, helpers] = useField(name);
   const [showPassword, setShowPassword] = useState(false);
@@ -29,12 +28,12 @@ function CustomInput({
 
   const handleInputChange = (e) => {
     const value = e.target.value;
-    
+
     // If maxLength is set, enforce the limit
     if (maxLength && value.length > maxLength) {
       return; // Don't update if exceeding limit
     }
-    
+
     helpers.setValue(value);
   };
 
@@ -57,7 +56,7 @@ function CustomInput({
       <div className="input-wrapper">
         {type == "search" && (
           <div className="toggle-password">
-            <Search />
+            <HiSearch />
           </div>
         )}
 
@@ -79,22 +78,24 @@ function CustomInput({
             onClick={togglePassword}
             type="button"
           >
-            {showPassword ? <Eye /> : <EyeSlash />}
+            {showPassword ? <HiEye /> : <HiEyeSlash />}
           </button>
         )}
       </div>
-      
+
       {/* Character Counter */}
       {shouldShowCharCount && (
         <div className="char-counter">
-          <span className={currentLength === maxLength ? "char-limit-reached" : ""}>
+          <span
+            className={currentLength === maxLength ? "char-limit-reached" : ""}
+          >
             {currentLength}
             {maxLength && `/${maxLength}`}
             {maxLength && currentLength === maxLength && " (limit reached)"}
           </span>
         </div>
       )}
-      
+
       <ErrorMessage name={name} component="div" className="ErrorMessage" />
     </div>
   );

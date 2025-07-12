@@ -15,9 +15,11 @@ const Page = async ({ params }) => {
   // const { data, isLoading, isError } = useAllProductsQuery(); in the case of using the client side
 
   return (
-    <div className="container">
-      <h1>{Translate("Title")}</h1>
-      <AllProducts />
+    <div className="page">
+      <div className="container">
+        <h1>{Translate("Title")}</h1>
+        <AllProducts />
+      </div>
     </div>
   );
 };

@@ -8,7 +8,7 @@ import arabic_ar from "react-date-object/locales/arabic_ar";
 import gregorian_ar from "react-date-object/locales/gregorian_ar";
 import gregorian_en from "react-date-object/locales/gregorian_en";
 import { useLocale } from "next-intl";
-import CalendarIcon from "./../../../../public/Icons/Calendar";
+import { HiCalendarDays } from "react-icons/hi2";
 import ReactDropdownSelect from "react-dropdown-select";
 import "./CustomDateInput.css";
 
@@ -371,8 +371,8 @@ const Input = ({ open, ...props }) => {
   return (
     <div className="Input">
       <input {...props} />
-      <button onClick={() => open()} type="button">
-        <CalendarIcon />
+      <button onClick={() => open()} type="button" className="calendar-button">
+        <HiCalendarDays className="calendar-icon" />
       </button>
     </div>
   );

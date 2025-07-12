@@ -6,8 +6,45 @@
 @tailwind utilities;
 
 :root {
+  /* Main Variables */
   --main-transition: all 0.5s ease-in-out;
   --main-border-radius: 0.5rem;
   --main-padding-top: 50px;
   --main-padding-bottom: 50px;
+
+  /* Color Variables */
+  --main-a-color: #3b82f6;
+  --main-p-color: #6b7280;
+  --main-error-color: #ef4444;
+
+  /* Scrollbar Variables */
+  --main-scrollbar-track-color: #f3f4f6;
+  --main-scrollbar-thumb-color: #d1d5db;
+  --main-scrollbar-thumb-hover-color: #9ca3af;
+
+  /* Button Variables */
+  --main-btn-bg-color: #3b82f6;
+  --main-btn-bg-active-color: #2563eb;
+
+  /* Input Variables */
+  --main-label-color: #374151;
+  --main-required-color: #ef4444;
+  --main-input-bg-color: #ffffff;
+  --main-input-text-color: #1f2937;
+  --main-input-border-colors: #d1d5db;
+  --main-input-placeholder-color: #9ca3af;
+  --main-input-focus-border-color: #3b82f6;
+  --main-checkbox-bg-color: #f3f4f6;
+  --main-checkbox-border-color: #d1d5db;
+  --main-checkbox-checked-bg-color: #3b82f6;
+  --main-checkbox-checked-border-color: #3b82f6;
+  --main-checkbox-checked-icon-color: #ffffff;
+  --main-dropdown-select-bg-color: #3b82f6;
+  --main-dropdown-select-text-color: #ffffff;
+  --main-dropdown-hover-bg-color: rgba(59, 130, 246, 0.1);
+  --main-dropdown-hover-text-color: #3b82f6;
+
+  /* Theme Colors */
+  --white: #ffffff;
+  --black: #000000;
 }

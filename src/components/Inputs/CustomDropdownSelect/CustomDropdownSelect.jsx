@@ -54,17 +54,8 @@ export default function CustomDropdownSelect({
         dropdownPosition="auto"
         keepSelectedInList={keepSelected}
         style={{
-          fontWeight: "400",
-          fontSize: "14px",
-          color: "#212121",
-          width: "100%",
-          backgroundColor: "#fff",
-          border: "1px solid #89939e",
-          minHeight: "43px",
           padding: "8px 16px",
           boxShadow: "none",
-          borderRadius: "0.5rem",
-          transition: "all 0.5s ease-in-out",
         }}
       />
 

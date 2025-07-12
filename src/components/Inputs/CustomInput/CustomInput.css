@@ -13,17 +13,17 @@
   position: relative;
   font-weight: 400;
   font-size: 14px;
-  color: var(--Black);
+  color: var(--main-label-color);
   transition: var(--main-transition);
 }
 .CustomInput label span {
   position: relative;
-  color: var(--Black);
+  color: var(--main-label-color);
   font-size: 14px;
   font-weight: 400;
 }
 .CustomInput label span.required {
-  color: #e9282b;
+  color: var(--main-required-color);
   font-size: 16px;
 }
 
@@ -33,9 +33,9 @@
   border-radius: var(--main-border-radius);
   font-size: 14px;
   transition: var(--main-transition);
-  background-color: var(--White);
-  color: var(--Black);
-  border: 1px solid var(--L_Grey);
+  background-color: var(--main-input-bg-color);
+  color: var(--main-input-text-color);
+  border: 1px solid var(--main-input-border-colors);
   width: 100%;
   display: flex;
   align-items: center;
@@ -50,7 +50,7 @@
   height: 25px;
   border: none;
   background: transparent;
-  color: var(--Black);
+  color: var(--main-input-text-color);
   font-size: 14px;
   font-family: 400;
   outline: none;
@@ -65,23 +65,23 @@
 .CustomInput textarea:-webkit-autofill:focus,
 .CustomInput textarea:-webkit-autofill:active {
   transition: background-color 9999s ease-in-out 0s;
-  -webkit-text-fill-color: var(--Black);
+  -webkit-text-fill-color: var(--main-input-text-color);
 }
 
 .CustomInput input::placeholder {
-  color: var(--Neutral-Grey);
+  color: var(--main-input-placeholder-color);
   font-size: 12px;
 }
 
 .CustomInput .input-wrapper:focus-within {
-  border-color: var(--D_Blue);
+  border-color: var(--main-input-focus-border-color);
   outline: none;
 }
 .CustomInput .toggle-password {
   background: none;
   border: none;
   cursor: pointer;
-  color: var(--Neutral-Grey);
+  color: var(--main-input-placeholder-color);
   width: 25px;
   height: 25px;
   font-size: 16px;
@@ -93,7 +93,7 @@
 
 .CustomInput .toggle-password.active,
 .CustomInput .toggle-password:hover {
-  color: var(--D_Blue);
+  color: var(--main-input-focus-border-color);
 }
 
 .CustomInput .char-counter {
@@ -101,7 +101,7 @@
   justify-content: flex-end;
   align-items: center;
   font-size: 12px;
-  color: var(--Neutral-Grey);
+  color: var(--main-input-placeholder-color);
   padding: 2px 4px;
   margin-top: -3px;
 }
@@ -112,7 +112,7 @@
 }
 
 .CustomInput .char-counter .char-limit-reached {
-  color: #e9282b !important;
+  color: var(--main-error-color) !important;
   font-weight: 500;
 }
 
