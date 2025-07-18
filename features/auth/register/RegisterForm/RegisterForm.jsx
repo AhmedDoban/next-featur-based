@@ -6,7 +6,7 @@ import CustomCheckBoxInput from "../../../../components/Inputs/CustomCheckBoxInp
 import CustomRadioInput from "../../../../components/Inputs/CustomRadioInput/CustomRadioInput";
 import CustomDateInput from "../../../../components/Inputs/CustomDateInput/CustomDateInput";
 import CustomOtpInput from "../../../../components/Inputs/CustomOtpInput/CustomOtpInput";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import FormikCustomImageUpload from "../../../../components/Inputs/CustomImageUpload";
 import CustomPhoneInput from "../../../../components/Inputs/CustomPhoneInput/CustomPhoneInput";
 

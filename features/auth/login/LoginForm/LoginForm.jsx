@@ -2,9 +2,9 @@ import "./LoginForm.css";
 import Image from "next/image";
 import CustomInput from "../../../../components/Inputs/CustomInput/CustomInput";
 import CustomCheckBoxInput from "../../../../components/Inputs/CustomCheckBoxInput/CustomCheckBoxInput";
-import Link from "next/link";
 import { useLocale } from "next-intl";
-import Splitter from "../../../../components/Splitter/Splitter";
+import Splitter from "@/components/Splitter/Splitter";
+import { Link } from "@/i18n/routing";
 
 function LoginForm() {
   const localActive = useLocale();
@@ -50,10 +50,7 @@ function LoginForm() {
             <span>Sign In Now</span>
           </button>
           <Splitter text={"Or"} size="w-[70%]" />
-          <Link
-            href={`/${localActive}/register`}
-            className="Custom-btn Transparent"
-          >
+          <Link href={`/register`} className="Custom-btn Transparent">
             <span>Create an Account</span>
           </Link>
         </div>
