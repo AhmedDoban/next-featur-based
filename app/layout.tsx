@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
-import "../style/Normalize.css";
-import "../style/Root.css";
-import "../style/Style.css";
+import "@/style/Normalize.css";
+import "@/style/Root.css";
+import "@/style/Style.css";
 import "react-toastify/dist/ReactToastify.css";
 
 export const metadata: Metadata = {
