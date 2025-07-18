@@ -1,36 +1,121 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Project Architecture Overview
 
-## Getting Started
+This is a **feature-based Next.js 14 application** with internationalization (i18n), Redux Toolkit state management, and a modular component system. The codebase follows a domain-driven design where features are self-contained modules.
 
-First, run the development server:
+### Key Architectural Patterns
+
+- **Feature-First Structure**: Code is organized by business domains (`features/auth/`, `features/products/`) rather than technical layers
+- **Internationalization**: Uses `next-intl` with locale-based routing (`[locale]` dynamic routes)
+- **Multi-Step Forms**: Leverages `FormikStepper` component for wizard-like form flows
+- **Custom Component Library**: Consistent input components in `components/Inputs/` with Formik integration
+
+## Critical Development Workflows
+
+### Development Commands
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev    # Start development server
+npm run build  # Production build
+npm run start  # Start production server
+npm run lint   # ESLint validation
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Internationalization Setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Locale Configuration**: `i18n/routing.ts` defines supported locales (`en`, `ar`)
+- **Message Files**: Add translations to `messages/en.json` and `messages/ar.json`
+- **RTL Support**: Arabic automatically sets `dir="rtl"` and uses Arabic fonts
+- **Translation Usage**: Always use `useTranslations()` hook for text content
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Project-Specific Conventions
 
-## Learn More
+### State Management Architecture
 
-To learn more about Next.js, take a look at the following resources:
+- **Redux Toolkit Query**: API calls use RTK Query slices (see `store/Slices/ProductsSlice.tsx`)
+- **Base Query Setup**: `store/baseQuery.ts` handles authentication headers and language headers automatically
+- **Cookie Integration**: Uses `cookies-next` for client-side cookie management with auth tokens
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Component Patterns
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+#### Custom Input Components
 
-## Deploy on Vercel
+- **Location**: All inputs in `components/Inputs/[ComponentName]/`
+- **Integration**: Built for Formik with `useField` hook
+- **Naming**: Follow `Custom[Type]Input` pattern (e.g., `CustomPhoneInput`, `CustomOtpInput`)
+- **Styling**: Each component has its own CSS file following BEM methodology
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#### Form Architecture
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **Multi-Step Forms**: Use `FormikStepper` wrapper with step state management
+- **Validation**: Yup schemas defined inline with form components
+- **Example Pattern**:
+
+```jsx
+<FormikStepper
+  initialValues={{}}
+  validationSchema={Yup.object().shape({})}
+  Step={Step}
+  SetStep={SetStep}
+  onSubmit={(values) => {}}
+>
+  {/* Form steps as children */}
+</FormikStepper>
+```
+
+### Feature Module Structure
+
+Each feature follows this pattern:
+
+```
+features/[feature-name]/
+  ├── [FeatureName].jsx          # Main feature component
+  ├── [FeatureName].css          # Feature-specific styles
+  └── components/                # Feature-scoped components
+```
+
+### API Integration Patterns
+
+- **Server Components**: Use `useAxiosData` hook for server-side data fetching
+- **Client Components**: Use RTK Query hooks for client-side API calls
+- **Authentication**: Token automatically attached via base query configuration
+- **Language Headers**: `Accept-Language` header set from cookie (`NEXT_LOCALE`)
+
+## File Naming and Organization
+
+### CSS Architecture
+
+- **Global Styles**: `style/` directory with `Root.css`, `Style.css`, `Normalize.css`
+- **Component Styles**: Co-located with components using same name
+- **Fonts**: Custom fonts in `style/Fonts/` with Arabic support
+
+### Key Integration Points
+
+- **Middleware**: `middleware.ts` handles locale routing and auth redirects (currently commented)
+- **Layout Providers**: Nested provider pattern in `app/[locale]/layout.tsx`:
+  - ToastProvider → NextIntlClientProvider → Loading → AOSProvider → StoreProvider
+- **Font Loading**: Conditional font family based on locale (`HelveticaNeueLTArabic` for Arabic)
+
+## Development Guidelines
+
+### When Adding New Features
+
+1. Create feature directory under `features/`
+2. Build feature-specific components within the feature
+3. Add translations to both `en.json` and `ar.json`
+4. Use existing custom input components for consistency
+5. Follow the FormikStepper pattern for multi-step workflows
+
+### When Creating Components
+
+1. Place reusable components in `components/`
+2. Feature-specific components stay within `features/[feature]/components/`
+3. Always include TypeScript interfaces for props
+4. Co-locate CSS files with component files
+5. Use `useTranslations()` for any user-facing text
+
+### API Development
+
+- Extend RTK Query slices for new endpoints
+- Authentication and language headers are handled automatically
+- Use TypeScript interfaces for API response types
+- Follow the baseQuery pattern for consistent error handling
